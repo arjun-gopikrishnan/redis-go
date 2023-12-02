@@ -41,15 +41,6 @@ func main() {
 		}
 
 		go handleConnection(conn)
-		// fmt.Fprintf(conn, "GET / HTTP/1.0\r\n\r\n")
 	}
 
-	// conn, err := l.Accept()
-
-	// if err != nil {
-	// 	fmt.Println("Error Accepting connection", err.Error())
-	// 	os.Exit(1)
-	// }
-
-	// fmt.Fprintf(conn, "GET / HTTP/1.0\r\n\r\n")
 }
