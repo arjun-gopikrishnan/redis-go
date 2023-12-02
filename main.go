@@ -13,11 +13,14 @@ func handleConnection(conn net.Conn) {
 
 	for scanner.Scan() {
 		command := scanner.Text()
-
-		if strings.ToUpper(command) == "PING" {
-			conn.Write([]byte("+PONG\r\n"))
-		} else {
-			conn.Write([]byte("Command not recognized\r\n"))
+		lines := strings.Split(strings.ReplaceAll(command, "\r", ""), `\n`)
+		fmt.Print(lines)
+		for _, line := range lines {
+			if strings.ToUpper(line) == "PING" {
+				conn.Write([]byte("+PONG\r\n"))
+			} else {
+				conn.Write([]byte("Command not recognized\r\n"))
+			}
 		}
 
 	}
